@@ -48,8 +48,15 @@ namespace LibraryAutoSystem.Controllers
         // GET: OduncAlinanKitaplars/Create
         public IActionResult Create()
         {
-            ViewData["KitapId"] = new SelectList(_context.Kitaplars, "KitapId", "KitapId");
-            ViewData["UyeId"] = new SelectList(_context.Uyelers, "UyeId", "UyeId");
+           var uye = _context.Uyelers.Where(s => s.UyeId != null)
+               .Select(s => new
+               {
+                   UyeId = s.UyeId,
+                   Uye = string.Format("{0} {1}", s.UyeAdi, s.UyeSoyadi)
+               })
+               .ToList();
+            ViewBag.KitapAd = new SelectList(_context.Kitaplars, "KitapId", "KitapAdi");
+            ViewBag.UyeAd = new SelectList(uye, "UyeId", "Uye");
             return View();
         }
 
@@ -84,8 +91,16 @@ namespace LibraryAutoSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["KitapId"] = new SelectList(_context.Kitaplars, "KitapId", "KitapId", oduncAlinanKitaplar.KitapId);
-            ViewData["UyeId"] = new SelectList(_context.Uyelers, "UyeId", "UyeId", oduncAlinanKitaplar.UyeId);
+           
+            var uye = _context.Uyelers.Where(s => s.UyeId != null)
+               .Select(s => new
+               {
+                   UyeID = s.UyeId,
+                   Uye = string.Format("{0} {1}", s.UyeAdi, s.UyeSoyadi)
+               })
+               .ToList();
+            ViewBag.KitapAd = new SelectList(_context.Kitaplars, "KitapId", "KitapAdi");
+            ViewBag.UyeAd = new SelectList(uye, "UyeID", "Uye");
             return View(oduncAlinanKitaplar);
         }
 
