@@ -1,0 +1,50 @@
+﻿@model LibraryAutoSystem.Models.Yazar
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Düzenleme</h1>
+
+<h4>Yazar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="YazarId" />
+            <div class="form-group">
+                <label asp-for="YazarAdi" class="control-label"></label>
+                <input asp-for="YazarAdi" class="form-control" />
+                <span asp-validation-for="YazarAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YazarSoyadi" class="control-label"></label>
+                <input asp-for="YazarSoyadi" class="form-control" />
+                <span asp-validation-for="YazarSoyadi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DogumTarihi" class="control-label"></label>
+                <input asp-for="DogumTarihi" class="form-control" />
+                <span asp-validation-for="DogumTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YazarUlke" class="control-label"></label>
+                <input asp-for="YazarUlke" class="form-control" />
+                <span asp-validation-for="YazarUlke" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Geri Dönme</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

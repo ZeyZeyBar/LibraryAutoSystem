@@ -1,0 +1,54 @@
+﻿@model IEnumerable<LibraryAutoSystem.Models.Yazar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Yzarlar Lisetesi</h1>
+
+<p>
+    <a asp-action="Create">Yeni Yazar Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.YazarAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YazarSoyadi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DogumTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YazarUlke)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.YazarAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YazarSoyadi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DogumTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YazarUlke)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.YazarId">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.YazarId">Detay</a> |
+                <a asp-action="Delete" asp-route-id="@item.YazarId">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

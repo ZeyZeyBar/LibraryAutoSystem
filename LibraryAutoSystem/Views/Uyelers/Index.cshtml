@@ -1,0 +1,66 @@
+﻿@model IEnumerable<LibraryAutoSystem.Models.Uyeler>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Üyeler Listesi</h1>
+
+<p>
+    <a asp-action="Create">Yeni Üye Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UyeAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UyeSoyadi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EPosta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KayitTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sifre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UyeAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UyeSoyadi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EPosta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KayitTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sifre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UyeId">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.UyeId">Detay</a> |
+                <a asp-action="Delete" asp-route-id="@item.UyeId">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

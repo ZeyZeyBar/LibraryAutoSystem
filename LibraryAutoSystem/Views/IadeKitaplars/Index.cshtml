@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LibraryAutoSystem.Models.IadeKitaplar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>İade Edilen Kitaplar Listesi</h1>
+
+<p>
+    <a asp-action="Create">Yeni İade Edilen Kitabı Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IadeTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IadeEden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IadeKitap)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IadeTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IadeEden.UyeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IadeKitap.KitapId)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Detay", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Sil", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

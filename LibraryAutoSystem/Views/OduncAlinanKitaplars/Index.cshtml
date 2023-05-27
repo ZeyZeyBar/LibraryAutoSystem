@@ -1,0 +1,42 @@
+﻿@model IEnumerable<LibraryAutoSystem.Models.OduncAlinanKitaplar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ödünç Alınan Kitaplar Listesi</h1>
+
+<p>
+    <a asp-action="Create">Yeni Ödünç Kitap Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kitap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uye)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kitap.KitapId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uye.UyeId)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Detay", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Sil", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

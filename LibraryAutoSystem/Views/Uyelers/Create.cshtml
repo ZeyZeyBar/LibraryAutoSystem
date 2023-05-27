@@ -1,0 +1,59 @@
+﻿@model LibraryAutoSystem.Models.Uyeler
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Yeni Üye Ekle</h1>
+
+<h4>Uyeler</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UyeAdi" class="control-label"></label>
+                <input asp-for="UyeAdi" class="form-control" />
+                <span asp-validation-for="UyeAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UyeSoyadi" class="control-label"></label>
+                <input asp-for="UyeSoyadi" class="form-control" />
+                <span asp-validation-for="UyeSoyadi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EPosta" class="control-label"></label>
+                <input asp-for="EPosta" class="form-control" />
+                <span asp-validation-for="EPosta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon" class="control-label"></label>
+                <input asp-for="Telefon" class="form-control" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KayitTarihi" class="control-label"></label>
+                <input asp-for="KayitTarihi" class="form-control" />
+                <span asp-validation-for="KayitTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sifre" class="control-label"></label>
+                <input asp-for="Sifre" class="form-control" />
+                <span asp-validation-for="Sifre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Geri Dön</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
