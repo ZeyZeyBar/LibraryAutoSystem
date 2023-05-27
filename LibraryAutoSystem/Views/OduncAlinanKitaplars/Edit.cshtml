@@ -13,8 +13,17 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="KitapId" />
-            <input type="hidden" asp-for="UyeId" />
+            @*
+            <input type="hidden" asp-for="KitapId" />*@
+            <label asp-for="KitapId" class="control-label"></label>
+            <select asp-for="KitapId" class="form-control" asp-items="ViewBag.KitapAd"></select>
+            <span asp-validation-for="KitapId" class="text-danger"></span>
+
+            @*<input type="hidden" asp-for="UyeId" />*@
+
+            <label asp-for="UyeId" class="control-label"></label>
+            <select asp-for="UyeId" class="form-control" asp-items="ViewBag.UyeAd"></select>
+            <span asp-validation-for="UyeId" class="text-danger"></span>
             <input type="hidden" asp-for="OduncAlmaTarihi" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
