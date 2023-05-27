@@ -53,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.IsbnNo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Yazar.YazarId)
+                    @Html.DisplayFor(modelItem => item.Yazar.YazarAdi) @Html.DisplayFor(modelItem => item.Yazar.YazarSoyadi)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.KitapId">Düzenle</a> |

@@ -47,7 +47,14 @@ namespace LibraryAutoSystem.Controllers
         // GET: Kitaplars/Create
         public IActionResult Create()
         {
-            ViewData["YazarId"] = new SelectList(_context.Yazars, "YazarId", "YazarId");
+            var stands = _context.Yazars.Where(s => s.YazarId!= null)
+                .Select(s => new
+                {
+                    YazarID = s.YazarId,
+                    YazarAd=string.Format("{0} {1}", s.YazarAdi, s.YazarSoyadi)
+                 })
+                .ToList();
+            ViewBag.YazarSoy = new SelectList(stands ,"YazarID", "YazarAd");
             return View();
         }
 
@@ -81,7 +88,14 @@ namespace LibraryAutoSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["YazarId"] = new SelectList(_context.Yazars, "YazarId", "YazarId", kitaplar.YazarId);
+            var stands = _context.Yazars.Where(s => s.YazarId != null)
+                .Select(s => new
+                {
+                    YazarID = s.YazarId,
+                    YazarAd = string.Format("{0} {1}", s.YazarAdi, s.YazarSoyadi)
+                })
+                .ToList();
+            ViewBag.YazarSoy = new SelectList(stands, "YazarID", "YazarAd");
             return View(kitaplar);
         }
 
