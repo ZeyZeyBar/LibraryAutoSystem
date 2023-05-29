@@ -17,7 +17,7 @@ namespace LibraryAutoSystem.Models
             using(var cn = GetConnection())
             {
                 NpgsqlCommand cmd = new NpgsqlCommand("yazar_kitaplari",cn);
-                cmd.Parameters.AddWithValue(new NpgsqlParameter("soyadi",DbType.String)).Value=yazar.Where(x=>x.YazarSoyadi==);
+                //cmd.Parameters.AddWithValue(new NpgsqlParameter("soyadi",DbType.String)).Value=yazar.Where(x=>x.YazarSoyadi==);
                 cmd.CommandType = CommandType.StoredProcedure;
                 var reader=cmd.ExecuteReader();
                 while (reader.Read())
