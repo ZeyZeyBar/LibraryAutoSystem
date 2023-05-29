@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LibraryAutoSystem.Models;
+using Npgsql;
+using System.Data;
 
 namespace LibraryAutoSystem.Controllers
 {
@@ -25,6 +27,26 @@ namespace LibraryAutoSystem.Controllers
                           View(await _context.Yazars.ToListAsync()) :
                           Problem("Entity set 'LibraryContext.Yazars'  is null.");
         }
+        //public IActionResult Functions()
+        //{
+        //    var yazar = _context.Yazars.ToList();
+
+        //    using (var cn = GetConnection())
+        //    {
+        //        NpgsqlCommand cmd = new NpgsqlCommand("yazar_kitaplari", cn);
+        //        cmd.Parameters.AddWithValue(new NpgsqlParameter("soyadi", DbType.String)).Value = _context.Yazars.ToList();
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        var reader = cmd.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            return View(reader);
+        //        }
+        //    }
+        //}
+        //private NpgsqlConnection GetConnection()
+        //{
+        //    return new NpgsqlConnection("Host = localhost; Database = Library; Username = postgres; Password = 123456");
+        //}
 
         // GET: Yazars/Details/5
         public async Task<IActionResult> Details(int? id)

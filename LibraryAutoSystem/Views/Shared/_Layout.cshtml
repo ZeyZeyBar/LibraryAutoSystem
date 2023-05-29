@@ -34,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Anasayfa</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Anasayfa</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Kitaplars" asp-action="Index">Kitaplar</a>
@@ -50,6 +50,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="IadeKitaplars" asp-action="Index">İade Edilen Kitaplar</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="OduncAlinanKitaplars" asp-action="GetGecmisOduncler">Geçmiş Ödünç Kitaplar</a>
                         </li>
                     </ul>
                 </div>
