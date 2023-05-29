@@ -24,7 +24,11 @@ namespace LibraryAutoSystem.Controllers
             var libraryContext = _context.OduncAlinanKitaplars.Include(o => o.Kitap).Include(o => o.Uye);
             return View(await libraryContext.ToListAsync());
         }
-
+        public async Task<IActionResult> GetGecmisOduncler()
+        {
+            var libraryContext = _context.GecmisOdunclers;
+            return View(await libraryContext.ToListAsync());
+        }
         // GET: OduncAlinanKitaplars/Details/5
         public async Task<IActionResult> Details(int? id)
         {

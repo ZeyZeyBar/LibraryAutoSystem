@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GecmisOduncler>
+@{
+    ViewData["Title"] = "GetGecmisOduncler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Geçmiş Ödünçler</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IadeKitapId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IadeEdenId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OduncAlmaTarihi)
+            </th>            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IadeKitapId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IadeEdenId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OduncAlmaTarihi)
+                </td>               
+               
+            </tr>
+        }
+    </tbody>
+</table>
