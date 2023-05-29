@@ -71,15 +71,30 @@ namespace LibraryAutoSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("KitapId,UyeId,OduncAlmaTarihi")] OduncAlinanKitaplar oduncAlinanKitaplar)
         {
-            if (ModelState.IsValid)
+           
+            if (oduncAlinanKitaplar!=null)
             {
                 _context.Add(oduncAlinanKitaplar);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                var hata = await _context.SaveChangesAsync();
+                if (hata==1)
+                {
+                    RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.Hata = "Sistem kapanmıştır. Sadece mesai saatleri içinde işlem yapılabilir!";
+                    return View();
+                }
+                return View();
             }
-            ViewData["KitapId"] = new SelectList(_context.Kitaplars, "KitapId", "KitapId", oduncAlinanKitaplar.KitapId);
-            ViewData["UyeId"] = new SelectList(_context.Uyelers, "UyeId", "UyeId", oduncAlinanKitaplar.UyeId);
-            return View(oduncAlinanKitaplar);
+            else
+            {
+                ViewData["KitapId"] = new SelectList(_context.Kitaplars, "KitapId", "KitapId", oduncAlinanKitaplar.KitapId);
+                ViewData["UyeId"] = new SelectList(_context.Uyelers, "UyeId", "UyeId", oduncAlinanKitaplar.UyeId);
+             
+                return View(oduncAlinanKitaplar);
+            }
         }
 
         // GET: OduncAlinanKitaplars/Edit/5
@@ -131,7 +146,8 @@ namespace LibraryAutoSystem.Controllers
                 {
                     if (!OduncAlinanKitaplarExists(oduncAlinanKitaplar.KitapId))
                     {
-                        return NotFound();
+                       ViewBag.Hata = "Sistem kapanmıştır. Sadece mesai saatleri içinde işlem yapılabilir!";
+                        return View();
                     }
                     else
                     {
